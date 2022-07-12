@@ -1,0 +1,12 @@
+{% extends "base.html" %} {% block title %}{{title}}{% endblock %} {% block
+content %}
+<h1>Shorten your URL here:</h1>
+<p>Enter your URL here</p>
+
+<form method="POST">
+	<input type="text" />
+	<div>{show output}</div>
+	<button type="submit">submit</button>
+</form>
+
+{% endblock %}

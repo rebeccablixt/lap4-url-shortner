@@ -8,4 +8,4 @@ CORS(app)
 
 @app.route('/')
 def index():
-    return f"hello world"
+    return render_template("index.html")
