@@ -8,13 +8,12 @@ content %}
 	<div class="urlForm">
 		<form method="POST">
 			<input type="text" id="url_input" name="url_input" required/>
-			<div id="results">
+			<div id="results" style="visibility: {{visibility}}">
 				<div>Original: {{url_input}}</div>
-				<div>Shortened: {{short_url_to_return}}</div>
+				<div>Shortened: <a href="{{short_url_to_return}}">{{short_url_to_return}}</a> </div>
 			</div>
 			<button id="submitBtn" type="submit">submit</button>
 		</form>
 	</div>
 </div>
-
 {% endblock %}
