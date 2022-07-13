@@ -12,6 +12,7 @@ python-dotenv = "*"
 psycopg2 = "*"
 flask-migrate = "*"
 waitress = "*"
+flask-sqlalchemy = "*"
 
 [dev-packages]
 
