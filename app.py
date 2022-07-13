@@ -37,34 +37,27 @@ class Urls(db.Model):
 def index():
     if request.method == 'POST':
         url_input = request.form['url_input']
-        print("url_input")
-        print(url_input)
         url_end = ""
     #  check if input in db already
         if Urls.query.filter_by(long_url=url_input).first():
     #  if in there, return short url            
             url_db_entry = Urls.query.filter_by(long_url=url_input).first()
             url_end = url_db_entry.short_url
-            print(url_end)
     #  if not, generate short url            
         else:           
             letters = string.ascii_letters
             url_end = ''.join(random.choice(letters) for i in range(6))
             # url_end = "dsgfds"
-            print(url_end)
     #  check if short url in the db      
     #  if in there, generate new short url      
             while Urls.query.filter_by(short_url=url_end).first():
                 letters = string.ascii_letters
                 url_end = ''.join(random.choice(letters) for i in range(6))
-                print(url_end)
     # add new long and short urls to db
             url_to_insert = Urls(url_input, url_end)
-            print(url_to_insert)
             db.session.add(url_to_insert)
             db.session.commit()
         short_url_to_return = 'https://url--shorties.herokuapp.com/' + url_end
-        print(short_url_to_return)    
     #  return short url in render template
         visibility = "visible"
         return render_template("index.html", url_input=url_input, short_url_to_return=short_url_to_return, visibility=visibility)
@@ -77,7 +70,6 @@ def show(urlend):
     try:
         # db query
         url_result = Urls.query.filter_by(short_url=urlend).first()
-        print(url_result.long_url)
         # return long url
         long_url = url_result.long_url
         # redirect to long url
