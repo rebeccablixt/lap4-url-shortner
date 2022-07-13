@@ -8,14 +8,14 @@ from flask_migrate import Migrate
 import os
 
 app = Flask(__name__)
-CORS(app)
+
 
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL').replace(": //", "ql: //", 1)
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
-
+CORS(app)
 
 class Urls(db.Model):
     __tablename__ = 'urls'
