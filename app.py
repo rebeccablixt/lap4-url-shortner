@@ -70,8 +70,10 @@ def show(urlend):
     try:
         # db query
         url_result = Urls.query.filter_by(short_url=urlend).first()
+        print(url_result)
         # return long url
         long_url = url_result.long_url
+        print(long_url)
         # redirect to long url
         return redirect(long_url)
     except:
