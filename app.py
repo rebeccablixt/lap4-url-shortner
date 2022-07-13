@@ -8,13 +8,12 @@ from flask_migrate import Migrate
 import os
 
 app = Flask(__name__)
-
-
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL').replace(": //", "ql: //", 1)
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URL').replace("://", "ql://", 1)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 CORS(app)
+
 
 class Urls(db.Model):
     __tablename__ = 'urls'
@@ -82,3 +81,6 @@ def show(urlend):
 @app.errorhandler(NotFound)
 def handle_404(err):
     return render_template('errors/404.html'), 404
+
+if __name__ == "__main__":
+    app.run(debug=True)
