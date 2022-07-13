@@ -1,12 +1,20 @@
 {% extends "base.html" %} {% block title %}{{title}}{% endblock %} {% block
 content %}
-<h1>Shorten your URL here:</h1>
-<p>Enter your URL here</p>
-
-<form method="POST">
-	<input type="text" id="url_input" name="url_input" />
-	<div>{show output}</div>
-	<button type="submit">submit</button>
-</form>
+<div class="mainContent">
+	<div class="formText">
+		<h1>Shorten your URL</h1>
+		<p>Enter your URL here</p>
+	</div>
+	<div class="urlForm">
+		<form method="POST">
+			<input type="text" id="url_input" name="url_input" required/>
+			<div id="results">
+				<div>Original: {{url_input}}</div>
+				<div>Shortened: {{short_url_to_return}}</div>
+			</div>
+			<button id="submitBtn" type="submit">submit</button>
+		</form>
+	</div>
+</div>
 
 {% endblock %}
