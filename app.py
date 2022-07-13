@@ -40,7 +40,6 @@ def index():
         print("url_input")
         print(url_input)
         url_end = ""
-        visibility = "visible"
     #  check if input in db already
         if Urls.query.filter_by(long_url=url_input).first():
     #  if in there, return short url            
@@ -67,6 +66,7 @@ def index():
         short_url_to_return = 'https://url--shorties.herokuapp.com/' + url_end
         print(short_url_to_return)    
     #  return short url in render template
+        visibility = "visible"
         return render_template("index.html", url_input=url_input, short_url_to_return=short_url_to_return, visibility=visibility)
     if request.method == 'GET':
         return render_template("index.html")
@@ -74,9 +74,18 @@ def index():
 
 @app.route('/<urlend>')
 def show(urlend):
-    # db query
-    # return long url
-    # redirect to long url
-    return redirect('urlend')
-
+    try:
+        # db query
+        url_result = Urls.query.filter_by(short_url=urlend).first()
+        print(url_result.long_url)
+        # return long url
+        long_url = url_result.long_url
+        # redirect to long url
+        return redirect(long_url)
+    except:
+        raise NotFound
     # add new_url & urlend to db
+
+@app.errorhandler(NotFound)
+def handle_404(err):
+    return render_template('errors/404.html'), 404
