@@ -4,6 +4,11 @@
 
 Live project: [URL Shorties](https://url--shorties.herokuapp.com/)
 
+## Contact
+
+- [Layla Southcombe](https://github.com/LaylaSouthcombe)
+- [Rebecca Blixt](https://github.com/rebeccablixt)
+
 ## Installation
 
 - Clone the repo and cd into the project folder
@@ -31,14 +36,15 @@ Live project: [URL Shorties](https://url--shorties.herokuapp.com/)
 
 ## Bugs
 
-None that we can see. Please let us know if you find any.
+Deployed version: cannot query the shortened URL from database.
+Development version: none that we can see. Please let us know if you find any.
 
 ## Wins & Challenges
 
 ### Wins
 
-- Backend and frontend work
+- Backend and frontend work locally
 
 ### Challenges
 
-- None really 🙂
+- Getting the database to work in the deployed website
