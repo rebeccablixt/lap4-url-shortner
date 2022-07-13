@@ -13,6 +13,7 @@ psycopg2 = "*"
 flask-migrate = "*"
 waitress = "*"
 flask-sqlalchemy = "*"
+gunicorn = "*"
 
 [dev-packages]
 
