@@ -1,11 +1,20 @@
+import random
+import string
 from flask import Flask, request, jsonify, render_template, redirect
 from flask_cors import CORS
 from werkzeug.exceptions import BadRequest, NotFound, InternalServerError
-import string
-import random
+from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+import os
 
 app = Flask(__name__)
 CORS(app)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
+    'DATABASE_URL').replace(": //", "ql: //", 1)
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+migrate = Migrate(app, db)
 
 
 @app.route('/', methods=['GET', 'POST'])
